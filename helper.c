@@ -1,74 +1,32 @@
 #include "monty.h"
 
 /**
- * _atoi - converts string of numbers to integer
- * @s: string to convert
+ * get_op_func - searches instructions for opcode function
+ * @str: opcode to search for
  *
- * Return: string converted to integer
+ * Return: pointer to corresponding function
  */
-int _atoi(char *s)
+void (*get_op_func(char *str))(stack_t **, unsigned int)
 {
-	int num = 0;
-	unsigned char neg = 0;
-	char *str;
+	instruction_t instructions[] = {
+		{"push", op_push},
+		{"pall", op_pall},
+		/*{"pint", op_pint},
+		{"pop", op_pop},
+		{"swap", op_swap},
+		{"add", op_add},
+		{"nop", op_nop},*/
+		{NULL, NULL}
+	};
+	int idx = 0;
 
-	/* need to include error handling for strings with non numbers */
-
-	for (str = s; *str && (*str < '0' || *str > '9'); str++)
-		if (*str == '-')
-			neg = !neg;
-	for (; *str >= '0' && *str <= '9'; str++)
+	while (instructions[idx].opcode)
 	{
-		num *= 10;
-		if (neg == 1)
-			num -= *str - '0';
-		else
-			num += *str - '0';
+		if (strcmp(instructions[idx].opcode, str) == 0)
+			return (instructions[idx].f);
+		idx++;
 	}
-	return (num);
-}
-
-/**
- * tokenizer - split a string into opcode instruction tokens
- * @str: line extracted from Monty ByteCode file
- *
- * Return: double pointer to first token
- */
-char **tokenizer(char *str)
-{
-	size_t idx = 0, io = 0;
-	int tok = 1;
-	char **tokens = NULL;
-	char *buf = NULL, *token = NULL, *bufptr = NULL, *delim = " ";
-
-	buf = strdup(str);
-	if (buf == NULL)
-	{
-		/* malloc failure */
-		return (NULL);
-	}
-	bufptr = buf;
-
-	while (*bufptr)
-	{
-		if (strchr(delim, *bufptr) != NULL && io == 0)
-		{
-			tok++;
-			io = 1;
-		}
-		else if (strchr(delim, *bufptr) == NULL && io == 1)
-			io = 0;
-		bufptr++;
-	}
-	tokens = malloc(sizeof(char *) * (tkn + 1));
-	if (tokens == NULL)
-	{
-		/*malloc failure*/
-		return (NULL);
-	}
-	token = strtok(buf, delim);
-	while (token)
-	{
-		tokens[idx] = strdup(token);
-	}
+	/* opcode error: need to free list, close file, and exit */
+	printf("%s is not an opcode dude", str);
+	return (NULL);
 }

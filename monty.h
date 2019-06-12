@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -35,9 +36,24 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void push(stack_t **stack, unsigned int line_number);
-void pall(stack_t **stack, unsigned int line_number);
+void (*get_op_func(char *str_))(stack_t **stack, unsigned int line_number);
+void op_push(stack_t **stack, unsigned int line_number);
+void op_pall(stack_t **stack, unsigned int line_number);
+/*void op_error(char *type, unsigned int_number);*/
+/**
+ * struct global_s - global shared variables
+ * @line: current line number
+ * @file: Monty file being read
+ * @op_code: parsed command token
+ *
+ * Description: contains useful information for error handling
+ */
 
-extern int node_val;
+struct stack_val
+{
+	int n;
+	char *file_name;
+	char *opcode;
+} stack_val;
 
 #endif
