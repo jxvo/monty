@@ -27,8 +27,8 @@ int main(int argc, char **argv)
 	}
 
 	/* open requested Monty ByteCode file */
-	stack_val.file_name = argv[1];
-	file_ptr = fopen(stack_val.file_name, "r");
+	stack_val.file = argv[1];
+	file_ptr = fopen(stack_val.file, "r");
 	if (!file_ptr)
 	{
 		/* file open error */
@@ -41,7 +41,7 @@ int main(int argc, char **argv)
 	{
 		line_number++;
 		tokens = sscanf(line_buf, "%s %d", op_buf, &op_val);
-		if (tokens > 2)
+		if (tokens != 2)
 		{
 			/* syntax error with line */
 			free(line_buf);

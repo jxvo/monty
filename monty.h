@@ -36,10 +36,18 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/* helper functions */
 void (*get_op_func(char *str_))(stack_t **stack, unsigned int line_number);
+void free_stack(stack_t **stack);
+/* opcode functions */
 void op_push(stack_t **stack, unsigned int line_number);
 void op_pall(stack_t **stack, unsigned int line_number);
-/*void op_error(char *type, unsigned int_number);*/
+/* error handling functions */
+void file_error(stack_t **stack, unsigned int line_number);
+void usage_error(stack_t **stack, unsigned int line_number);
+void memory_error(stack_t **stack, unsigned int line_number);
+void push_error(stack_t **stack, unsigned int line_number);
+
 /**
  * struct global_s - global shared variables
  * @line: current line number
@@ -52,7 +60,7 @@ void op_pall(stack_t **stack, unsigned int line_number);
 struct stack_val
 {
 	int n;
-	char *file_name;
+	char *file;
 	char *opcode;
 } stack_val;
 
