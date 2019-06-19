@@ -2,44 +2,64 @@
 
 /**
  * file_error - raised when file can't be opened
- * @line_number: line number where error occured
  *
  * Return: nothing
  */
-void file_error(stack_t **stack, unsigned int line_number)
+void file_error(void)
 {
-	fprintf(STDERR_FILENO, "Error: Can't open file %s\n", stack_val.file);
-	free_stack(stack);
+	fprintf(stderr, "Error: Can't open file %s\n", stack_val.file);
 	exit(EXIT_FAILURE);
 }
 
 /**
  * usage_error - raised when user inputs wrong syntax
- * @line_number: line number where error occured
  *
  * Return: nothing
  */
-void usage_error(unsigned int line_number)
+void usage_error(void)
 {
+	fprintf(stderr, "USAGE: monty file\n");
+	exit(EXIT_FAILURE);
 }
 
 /**
- * memory_error - malloc error handling program
+ * malloc_error - malloc error handling program
+ * @stack: double pointer to head node
+ *
+ * Return: nothing
+ */
+void malloc_error(stack_t **stack)
+{
+	fprintf(stderr, "Error: malloc failed\n");
+	free_stack(stack);
+	exit(EXIT_FAILURE);
+}
+
+/**
+ * opcode_error - invalid instruction error handling program
+ * @stack: double pointer to head node
  * @line_number: line number where error occured
  *
  * Return: nothing
  */
-void memory_error(unsigned int line_number)
+void opcode_error(stack_t **stack, unsigned int line_number)
 {
-
+	fprintf(stderr, "L%d: unknown instruction %s\n", line_number,
+		stack_val.opcode);
+	free_stack(stack);
+	exit(EXIT_FAILURE);
 }
 
 /**
  * push_error - op_push syntax error handling program
+ * @stack: double pointer to head node
  * @line_number: line number where error occured
  *
  * Return: nothing
  */
-void push_error(unsigned int line_number)
+void push_error(stack_t **stack, unsigned int line_number)
 {
+	fprintf(stderr, "L%d: usage: push integer\n", line_number);
+	free_stack(stack);
+	exit(EXIT_FAILURE);
 }

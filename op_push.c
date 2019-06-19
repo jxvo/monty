@@ -17,12 +17,13 @@ void op_push(stack_t **head, unsigned int line_number)
 	if (!new_node)
 	{
 		/* malloc error */
-		exit(EXIT_FAILURE);
+		malloc_error(head);
 	}
+	new_node->prev = NULL;
 	new_node->n = stack_val.n;
+	new_node->next = *head;
 	if (*head)
 		(*head)->prev = new_node;
-	new_node->next = *head;
-	new_node->prev = NULL;
 	*head = new_node;
+	printf("Pushing: %d\n", (*head)->n);
 }

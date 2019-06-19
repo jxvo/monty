@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <string.h>
 #include <stdbool.h>
 
@@ -37,15 +38,17 @@ typedef struct instruction_s
 } instruction_t;
 
 /* helper functions */
-void (*get_op_func(char *str_))(stack_t **stack, unsigned int line_number);
+void (*get_op_func(char *str))(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t **stack);
 /* opcode functions */
 void op_push(stack_t **stack, unsigned int line_number);
 void op_pall(stack_t **stack, unsigned int line_number);
 /* error handling functions */
-void file_error(stack_t **stack, unsigned int line_number);
-void usage_error(stack_t **stack, unsigned int line_number);
-void memory_error(stack_t **stack, unsigned int line_number);
+void file_error(void);
+void usage_error(void);
+void malloc_error(stack_t **stack);
+/* opcode error handling */
+void opcode_error(stack_t **stack, unsigned int line_number);
 void push_error(stack_t **stack, unsigned int line_number);
 
 /**
