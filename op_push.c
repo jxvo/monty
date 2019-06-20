@@ -2,7 +2,7 @@
 
 /**
  * op_push - pushes an element to the top of the stack
- * @stack: double pointer to head node
+ * @head: double pointer to head node
  * @line_number: line number where opcode was encountered
  *
  * Return: nothing, exit with code EXIT_FAILURE on failure
