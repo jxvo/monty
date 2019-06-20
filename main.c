@@ -50,6 +50,7 @@ int main(int argc, char **argv)
 		}
 		stack_val.opcode = op_buf;
 		stack_val.n = op_val;
+		op_val = 0;
 
 		/* TEST DELETE ME
 		printf("%d Tokens: (opcode: <%s>, value: <%d>)\n",
@@ -60,10 +61,7 @@ int main(int argc, char **argv)
 		line_buf = NULL;
 		/* get and execute function with empty stack address and line */
 		if (tokens > 0)
-		{
 			get_op_func(stack_val.opcode)(&stack, line_number);
-		}
-		op_val = 0;
 	}
         free(line_buf);
 	free_stack(&stack);
