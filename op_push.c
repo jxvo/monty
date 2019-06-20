@@ -25,5 +25,4 @@ void op_push(stack_t **head, unsigned int line_number)
 	if (*head)
 		(*head)->prev = new_node;
 	*head = new_node;
-	printf("Pushing: %d\n", (*head)->n);
 }

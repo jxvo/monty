@@ -26,7 +26,6 @@ void (*get_op_func(char *str))(stack_t **, unsigned int)
 			return (instructions[idx].f);
 		idx++;
 	}
-	/* opcode error: need to free list, close file, and exit */
-	printf("%s is not an opcode dude", str);
-	return (NULL);
+	/* opcode error */
+	return opcode_error;
 }

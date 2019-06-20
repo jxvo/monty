@@ -5,7 +5,7 @@
  * @argc: argument count
  * @argv: array of argument tokens
  *
- * Return: 0
+ * Return: always 0
  */
 int main(int argc, char **argv)
 {
@@ -38,11 +38,11 @@ int main(int argc, char **argv)
 	{
 		line_number++;
 
-		/* TEST DELETE ME */
-		printf("\nL%d: %s", line_number, line_buf);
+		/* TEST DELETE ME
+		printf("\nL%d: %s", line_number, line_buf);*/
 
 		tokens = sscanf(line_buf, "%s %d", op_buf, &op_val);
-		if (tokens != 2)
+		if (tokens > 2)
 		{
 			/* usage error */
 			free(line_buf);
@@ -51,14 +51,19 @@ int main(int argc, char **argv)
 		stack_val.opcode = op_buf;
 		stack_val.n = op_val;
 
-		/* TEST DELETE ME */
-		printf("(opcode: <%s>, value: <%d>)\n", op_buf, op_val);
+		/* TEST DELETE ME
+		printf("%d Tokens: (opcode: <%s>, value: <%d>)\n",
+		       tokens, op_buf, op_val);*/
 
 		/* line buffer has done it's job, nice work buddy */
 		free(line_buf);
 		line_buf = NULL;
 		/* get and execute function with empty stack address and line */
-		get_op_func(stack_val.opcode)(&stack, line_number);
+		if (tokens > 0)
+		{
+			get_op_func(stack_val.opcode)(&stack, line_number);
+		}
+		op_val = 0;
 	}
         free(line_buf);
 	free_stack(&stack);
