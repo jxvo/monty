@@ -10,7 +10,7 @@
 int main(int argc, char **argv)
 {
 	FILE *file_ptr;
-	char *line_buf = NULL, op_buf[16], op_val[19];
+	char *line_buf = NULL, op_buf[20], val_buf[20];
 	ssize_t bytes_read = 0;
 	size_t buf_size = 0;
 	unsigned int line_number = 0;
@@ -30,11 +30,11 @@ int main(int argc, char **argv)
 	{
 		line_number++;
 
-/* TEST DELETE ME */
-		printf("\nL%d: %s", line_number, line_buf);
+/* TEST DELETE ME
+		printf("\nParsed-Line %d: %s", line_number, line_buf);
+*/
 
-
-		tokens = sscanf(line_buf, "%s %d", op_buf, &op_val);
+		tokens = sscanf(line_buf, "%s %s", op_buf, val_buf);
 		if (tokens > 2)
 		{
 			/* usage error */
@@ -42,17 +42,19 @@ int main(int argc, char **argv)
 			usage_error();
 		}
 
-		/* TEST DELETE ME */
-		printf("(opcode: <%s>, value: <%d>)\n", op_buf, op_val);
-
+		/* TEST DELETE ME
+		printf("tokens: %d (opcode: <%s>, value: <%s>)\n",
+		tokens, op_buf, val_buf);
+*/
 		/* line buffer has done it's job, nice work buddy */
 		free(line_buf);
 		line_buf = NULL;
 		stack_val.opcode = op_buf;
-		stack_val.n = op_val;
-		op_val = 0;
+		stack_val.n = val_buf;
 		if (tokens > 0)
 			get_op_func(stack_val.opcode)(&stack, line_number);
+		memset(op_buf, '\0', sizeof op_buf);
+		memset(val_buf, '\0', sizeof val_buf);
 	}
 	free(line_buf);
 	free_stack(&stack);
