@@ -41,3 +41,17 @@ void swap_error(stack_t **stack, unsigned int line_number)
 	free_stack(stack);
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * add_error - op_add error handling program
+ * @stack: double pointer to head node
+ * @line_number: line number where error occured
+ *
+ * Return: nothing
+ */
+void add_error(stack_t **stack, unsigned int line_number)
+{
+	fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+	free_stack(stack);
+	exit(EXIT_FAILURE);
+}
