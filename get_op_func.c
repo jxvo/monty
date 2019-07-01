@@ -13,8 +13,8 @@ void (*get_op_func(char *str))(stack_t **, unsigned int)
 		{"pall", op_pall},
 		{"pint", op_pint},
 		{"pop", op_pop},
+		{"swap", op_swap},
 		/*
-		 * {"swap", op_swap},
 		 * {"add", op_add},
 		 * {"nop", op_nop},
 		 */

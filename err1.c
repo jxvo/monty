@@ -27,3 +27,17 @@ void pop_error(stack_t **stack, unsigned int line_number)
 	free_stack(stack);
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * swap_error - op_swap error handling program
+ * @stack: double pointer to head node
+ * @line_number: line number where error occured
+ *
+ * Return: nothing
+ */
+void swap_error(stack_t **stack, unsigned int line_number)
+{
+	fprintf(stderr, "L%d: can't swap, stack too short", line_number);
+	free_stack(stack);
+	exit(EXIT_FAILURE);
+}
