@@ -63,17 +63,3 @@ void push_error(stack_t **stack, unsigned int line_number)
 	free_stack(stack);
 	exit(EXIT_FAILURE);
 }
-
-/**
- * pint_error - op_pint error handling program
- * @stack: double pointer to head node
- * @line_number: line number where error occured
- *
- * Return: nothing
- */
-void pint_error(stack_t **stack, unsigned int line_number)
-{
-	fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-	free_stack(stack);
-	exit(EXIT_FAILURE);
-}

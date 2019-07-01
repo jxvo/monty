@@ -12,12 +12,12 @@ void (*get_op_func(char *str))(stack_t **, unsigned int)
 		{"push", op_push},
 		{"pall", op_pall},
 		{"pint", op_pint},
-		 /*
-		  * {"pop", op_pop},
-		  * {"swap", op_swap},
-		  * {"add", op_add},
-		  * {"nop", op_nop},
-		  */
+		{"pop", op_pop},
+		/*
+		 * {"swap", op_swap},
+		 * {"add", op_add},
+		 * {"nop", op_nop},
+		 */
 		{NULL, NULL}
 	};
 	int idx = 0;

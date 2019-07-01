@@ -44,6 +44,7 @@ void free_stack(stack_t **stack);
 void op_push(stack_t **stack, unsigned int line_number);
 void op_pall(stack_t **stack, unsigned int line_number);
 void op_pint(stack_t **stack, unsigned int line_number);
+void op_pop(stack_t **stack, unsigned int line_number);
 /* error handling functions */
 void file_error(void);
 void usage_error(void);
@@ -52,6 +53,7 @@ void malloc_error(stack_t **stack);
 void opcode_error(stack_t **stack, unsigned int line_number);
 void push_error(stack_t **stack, unsigned int line_number);
 void pint_error(stack_t **stack, unsigned int line_number);
+void pop_error(stack_t **stack, unsigned int line_number);
 /**
  * struct global_s - global shared variables
  * @line: current line number
