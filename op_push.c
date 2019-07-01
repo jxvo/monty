@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * op_push - pushes an element to the top of the stack
+ * op_push - pushes a value to the top of a stack
  * @head: double pointer to head node
  * @line_number: line number where opcode was encountered
  *
