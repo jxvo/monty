@@ -11,10 +11,11 @@ void op_pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *node;
 
-	if (!line_number || !stack)
+	if (!line_number)
 		/*an error should happen*/
 		return;
-	node = *stack	while (node)
+	node = *stack;
+	while (node)
 	{
 		printf("%d\n", node->n);
 		node = node->next;
