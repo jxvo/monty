@@ -37,7 +37,7 @@ void pop_error(stack_t **stack, unsigned int line_number)
  */
 void swap_error(stack_t **stack, unsigned int line_number)
 {
-	fprintf(stderr, "L%d: can't swap, stack too short", line_number);
+	fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 	free_stack(stack);
 	exit(EXIT_FAILURE);
 }
