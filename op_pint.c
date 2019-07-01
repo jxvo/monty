@@ -9,8 +9,7 @@
  */
 void op_pint(stack_t **head, unsigned int line_number)
 {
-	if (!head)
-		/* empty stack error */
+	if (!head || !*head) /* empty stack error */
 		pint_error(head, line_number);
 	printf("%d\n", (*head)->n);
 }
