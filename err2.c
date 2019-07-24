@@ -55,3 +55,31 @@ void mod_error(stack_t **stack, unsigned int line_number)
 	free_stack(stack);
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * pchar_error - op_pchar stack error handling program
+ * @stack: double pointer to head node
+ * @line_number: line number where error occured
+ *
+ * Return: nothing
+ */
+void pchar_error(stack_t **stack, unsigned int line_number)
+{
+        fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
+        free_stack(stack);
+        exit(EXIT_FAILURE);
+}
+
+/**
+ * char_error - op_pchar character error handling program
+ * @stack: double pointer to head node
+ * @line_number: line number where error occured
+ *
+ * Return: nothing
+ */
+void char_error(stack_t **stack, unsigned int line_number)
+{
+        fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+        free_stack(stack);
+        exit(EXIT_FAILURE);
+}
