@@ -14,6 +14,8 @@ void op_mod(stack_t **head, unsigned int line_number)
 
 	if (!head || !*head || !(*head)->next) /* short stack error */
 		mod_error(head, line_number);
+	if ((*head)->n == 0)
+		zero_error(head, line_number);
 	first = (*head)->n;
 	second = (*head)->next->n;
 	*head = (*head)->next;
