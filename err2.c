@@ -37,7 +37,7 @@ void zero_error(stack_t **stack, unsigned int line_number)
  */
 void mul_error(stack_t **stack, unsigned int line_number)
 {
-	fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
+	fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
 	free_stack(stack);
 	exit(EXIT_FAILURE);
 }
