@@ -13,7 +13,7 @@ void op_mod(stack_t **head, unsigned int line_number)
 	int first, second;
 
 	if (!head || !*head || !(*head)->next) /* short stack error */
-		mul_error(head, line_number);
+		mod_error(head, line_number);
 	first = (*head)->n;
 	second = (*head)->next->n;
 	*head = (*head)->next;
