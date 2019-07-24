@@ -12,7 +12,7 @@ void op_rotl(stack_t **head, unsigned int line_number)
 	stack_t *tail = *head;
 	int temp_n = 0;
 
-	if (!line_number)
+	if (!line_number || !head || !*head || !(*head)->next)
 		return;
 
 	temp_n = tail->n;
