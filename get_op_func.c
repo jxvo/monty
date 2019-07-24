@@ -24,6 +24,8 @@ void (*get_op_func(char *str))(stack_t **, unsigned int)
 		{"pstr", op_pstr},
 		{"rotl", op_rotl},
 		{"rotr", op_rotr},
+		{"stack", op_mstk},
+		{"queue", op_mque},
 		{"#", op_nop},
 		{NULL, NULL}
 	};

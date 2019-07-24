@@ -9,7 +9,7 @@
  */
 void op_pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *node;
+	stack_t *node = NULL;
 
 	if (!line_number)
 		/*an error should happen*/

@@ -8,7 +8,7 @@
  */
 void free_stack(stack_t **stack)
 {
-	stack_t *node;
+	stack_t *node = NULL;
 
 	if (!stack || !*stack)
 		return;

@@ -57,6 +57,8 @@ void op_pchar(stack_t **stack, unsigned int line_number);
 void op_pstr(stack_t **stack, unsigned int line_number);
 void op_rotl(stack_t **stack, unsigned int line_number);
 void op_rotr(stack_t **stack, unsigned int line_number);
+void op_mstk(stack_t **stack, unsigned int line_number);
+void op_mque(stack_t **stack, unsigned int line_number);
 
 /* error handling functions */
 void file_error(void);
@@ -79,11 +81,11 @@ void pchar_error(stack_t **stack, unsigned int line_number);
 void char_error(stack_t **stack, unsigned int line_number);
 
 /**
- * struct global_s - global shared variables
- * @line: current line number
+ * struct stack_val - global shared variables
+ * @n: value of new node
  * @file: Monty file being read
- * @op_code: parsed command token
- *
+ * @opcode: parsed command token
+ * @q: switch to queue mode (FIFO) - 0 for off, 1 for on
  * Description: contains useful information for error handling
  */
 
@@ -92,6 +94,7 @@ struct stack_val
 	char *n;
 	char *file;
 	char *opcode;
+	int q;
 } stack_val;
 
 #endif

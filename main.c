@@ -18,6 +18,7 @@ int main(int argc, char **argv)
 
 	if (argc != 2 || !argv[1])
 		usage_error();
+	stack_val.q = 0; /*  default to stack mode */
 	/* open requested Monty ByteCode file */
 	stack_val.file = argv[1];
 	file_ptr = fopen(stack_val.file, "r");
