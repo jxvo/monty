@@ -16,6 +16,7 @@ void (*get_op_func(char *str))(stack_t **, unsigned int)
 		{"swap", op_swap},
 		{"add", op_add},
 		{"nop", op_nop},
+		{"sub", op_sub},
 		{NULL, NULL}
 	};
 	int idx = 0;
