@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 		line_buf = NULL;
 		stack_val.opcode = op_buf;
 		stack_val.n = val_buf;
-		if (tokens > 0)
+		if (tokens > 0 && stack_val.opcode[0] != '#')
 			get_op_func(stack_val.opcode)(&stack, line_number);
 		memset(op_buf, '\0', sizeof(op_buf));
 		memset(val_buf, '\0', sizeof(val_buf));
